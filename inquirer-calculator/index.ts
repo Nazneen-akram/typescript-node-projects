@@ -1,5 +1,42 @@
-# Simple Command Line Calculator
-------
-Develop a simple command line calculator using TypeScipt, Node.js and Inquirer.
+import inquirer from "inquirer";
+//import Choices from "inquirer/lib/objects/choices.js";
 
-Create a GitHub repository for the project and submit its URL and NPX command in the project submission form. Please note that you will create a NPX command for your project and publish it on npm. After the NPX command is working you will announce it on Panaverse groups on Facebook, Discord, and Twitter.
+const answer = await inquirer.prompt([
+    {
+        type: 'number',
+        name:'num1',
+        message: 'Enter the first number:'
+    },
+    {
+        type: 'number',
+        name:'num2',
+        message: 'Enter the second number:'
+    },
+    {
+        type: 'list',
+        name:'operator',
+        message: 'Select the operator you want to perform:',
+        choices: ['Add','Subtract','Multiply','Divide']
+    }   
+]);
+
+let result:number;
+
+switch(answer.operator){
+    case 'Add':
+        result = answer.num1 + answer.num2;
+        console.log("The answer for Addition is:",result);
+        break;
+    case 'Subtract':
+        result = answer.num1 - answer.num2;
+        console.log("The answer for Subtraction is:",result);
+        break;
+    case 'Multiply':
+        result = answer.num1 * answer.num2;
+        console.log("The answer for Multiplication is:",result);
+        break;
+    case 'Divide':
+        result = answer.num1 / answer.num2;
+        console.log("The answer for Division is:",result);
+        break;
+}
